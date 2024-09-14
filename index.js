@@ -1,12 +1,13 @@
-const jsonServer = require("json-server"); // importing json-server library
+import jsonServer from "json-server";
+
 const server = jsonServer.create();
-const router = jsonServer.router("cities.json");
+const router = jsonServer.router("cities.json"); // Ensure the file name is correct
 const middlewares = jsonServer.defaults();
-const port = process.env.PORT;
+const port = process.env.PORT || 9000;
 
 server.use(middlewares);
 server.use(router);
 
 server.listen(port, () => {
-  console.log('JSON server is running');
-})
+  console.log(`JSON Server is running on port ${port}`);
+});
